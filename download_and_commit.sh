@@ -4,7 +4,7 @@ set -euo pipefail
 # Helper script to mirror a site and push the static files into this repo.
 # Usage: chmod +x download_and_commit.sh && ./download_and_commit.sh
 
-SITE_URL="https://mspc.fundraising.netlify.app"
+SITE_URL="https://mspc-fundraising.netlify.app"
 REPO_URL="https://github.com/douglasusa/mspc-static.git"
 
 TMPDIR=$(mktemp -d)
@@ -20,7 +20,7 @@ cd "$TMPDIR"
 wget --mirror --page-requisites --adjust-extension --convert-links --no-parent "$SITE_URL"
 
 # Find the directory created by wget. Usually it's the hostname.
-MIRROR_DIR=$(find . -maxdepth 1 -type d -name "*mspc.fundraising.netlify.app*" -print -quit)
+MIRROR_DIR=$(find . -maxdepth 1 -type d -name "*mspc-fundraising.netlify.app*" -print -quit)
 if [ -z "$MIRROR_DIR" ]; then
   echo "Could not find mirrored site directory. Listing temp dir for debugging:" >&2
   ls -la
